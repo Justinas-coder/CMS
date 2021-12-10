@@ -1,25 +1,21 @@
 <x-admin-master>
     @section('content')
 
-        <div class="row">
-        
-            <div class="col-sm-3">
+    <div class="row">
+
+        <div class="col-sm-3">
 
             <form method="post" action="{{route('permissions.store')}}">
                 @csrf
 
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        id="name" 
-                        class="form-control @error('name') is-invalid @enderror">
+                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
 
                     <div>
-                    
+
                         @error('name')
-                            <span><strong>{{$message}}</strong></span>
+                        <span><strong>{{$message}}</strong></span>
                         @enderror
 
                     </div>
@@ -33,7 +29,7 @@
         </div>
 
 
-             <div class="col-sm-9">
+        <div class="col-sm-9">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Permissions</h6>
             </div>
@@ -46,15 +42,16 @@
                                 <th>Name</th>
                                 <th>Slug</th>
                                 <th>Delete</th>
-                                
-                                </tr>
+
+                            </tr>
                         </thead>
-                        
+
                         <tbody>
-                        @foreach ($permissions as $permission)
+                            @foreach ($permissions as $permission)
                             <tr>
                                 <td>{{$permission->id}}</td>
-                                <td><a href="{{route('permissions.edit', $permission->id)}}">{{$permission->name}}</a></td>
+                                <td><a href="{{route('permissions.edit', $permission->id)}}">{{$permission->name}}</a>
+                                </td>
                                 <td>{{$permission->slug}}</td>
                                 <td>
                                     <form method="post" action="{{route('permissions.destroy', $permission->id)}}">
@@ -66,8 +63,8 @@
                                 </td>
 
                             </tr>
-                                 
-                        @endforeach
+
+                            @endforeach
 
                         </tbody>
                     </table>
@@ -75,7 +72,7 @@
             </div>
         </div>
 
-        </div>
-        
+    </div>
+
     @endsection
 </x-admin-master>

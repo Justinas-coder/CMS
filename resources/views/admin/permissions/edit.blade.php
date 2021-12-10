@@ -6,12 +6,12 @@
     <div class="alert alert-success">
         {{session('permission-updated')}}
     </div>
-@endif
+    @endif
 
-<div class="row">
+    <div class="row">
 
         <div class="col-sm-6">
-        
+
             <h1>Edit: {{$permission->name}}</h1>
 
 
@@ -26,11 +26,11 @@
 
                 </div>
 
-<button type="submit" class="btr btr-primary">Update</button>
+                <button type="submit" class="btr btr-primary">Update</button>
             </form>
-        
+
         </div>
     </div>
-@endsection
+    @endsection
 
 </x-admin-master>

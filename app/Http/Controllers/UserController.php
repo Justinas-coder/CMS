@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,6 +15,38 @@ class UserController extends Controller
         $users = User::all();
         return view('admin.users.index', ['users'=>$users]);
 
+    }
+
+    public function create(){
+        return view('admin.users.create');
+    }
+
+    public function store(Request $request)
+    {      
+        $request->validate([
+
+            'username'=> ['unique:users,username', 'required', 'string', 'max:255', 'alpha_dash'],
+            'name'=> ['required', 'string', 'max:255'],
+            'status'=> [ 'string', 'max:255'],
+            'email'=> ['unique:users,email', 'required', 'email', 'max:255'],
+            'avatar'=> ['file' ]
+        ]);
+
+        $request->avatar = $request->avatar ? $request->avatar->store('images') : '';
+        
+        User::create([
+            'file' => $request->avatar,
+            'username' => $request->username,
+            'name' => $request->name,
+            'status' => $request->status,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
+
+        return back();
+
+
+    //   return $request->all();
     }
 
     public function show(User $user)

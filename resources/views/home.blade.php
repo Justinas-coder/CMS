@@ -2,8 +2,7 @@
 @section('content')
 
 
-<h1 class="my-4">Page Heading
-          <small>Secondary Text</small>
+<h1 class="my-4">CONTENT PAGE
         </h1>
 
         <!-- Blog Post -->
@@ -19,7 +18,7 @@
           </div>
           <div class="card-footer text-muted">
             Posted on {{$post->created_at->diffForHumans()}} by
-            <a href="#">Start Bootstrap</a>
+            <a href="#">{{$post->user->name}}</a>
           </div>
         </div>
 

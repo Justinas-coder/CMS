@@ -11,6 +11,10 @@ Route::middleware('role:admin')->group(function(){
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::put('/users/{user}/attach', [App\Http\Controllers\UserController::class, 'attach'])->name('user.role.attach');
     Route::put('/users/{user}/detach', [App\Http\Controllers\UserController::class, 'detach'])->name('user.role.detach');
+    Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
+    Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
+
+
 
 
 });
