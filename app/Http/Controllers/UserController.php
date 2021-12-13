@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
@@ -18,6 +19,9 @@ class UserController extends Controller
     }
 
     public function create(){
+
+
+        
         return view('admin.users.create');
     }
 
@@ -27,7 +31,7 @@ class UserController extends Controller
 
             'username'=> ['unique:users,username', 'required', 'string', 'max:255', 'alpha_dash'],
             'name'=> ['required', 'string', 'max:255'],
-            'status'=> [ 'string', 'max:255'],
+            'status'=> [ 'required','string', 'max:255'],
             'email'=> ['unique:users,email', 'required', 'email', 'max:255'],
             'avatar'=> ['file' ]
         ]);
@@ -42,6 +46,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+
+        
 
         return back();
 
@@ -66,7 +72,8 @@ class UserController extends Controller
             'username'=> ['required', 'string', 'max:255', 'alpha_dash'],
             'name'=> ['required', 'string', 'max:255'],
             'email'=> ['required', 'email', 'max:255'],
-            'avatar'=> ['file' ]
+            'avatar'=> ['file' ],
+            'status'=> ['required']
           
         ]);
 

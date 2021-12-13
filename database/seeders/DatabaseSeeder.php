@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // DB::table('users')->truncate();
         // DB::table('posts')->truncate();
     
-        User::factory()->count(100)->create()->each(function($user){
+        User::factory()->count(10)->create()->each(function($user){
 
             $user->posts()->save(Post::factory()->make());
 

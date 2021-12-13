@@ -15,36 +15,48 @@
 
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control">
+                    <input type="text" name="username" placeholder="Enter Userame" class="form-control">
+                    <div class="alert-danger">{{ $errors->first('username') }}</div>
+
                 </div>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" class="form-control">
+                    <input type="text" id="name" name="name" placeholder="Enter Name" class="form-control ">
+                    <div class="alert-danger">{{ $errors->first('name') }}</div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" id="email" name="email" class="form-control">
+                    <input type="text" id="email" name="email" placeholder="Enter Email" class="form-control">
+                    <div class="alert-danger">{{ $errors->first('email') }}</div>
                     
                 </div>
 
                 <div class="form-group">
                     <label for="status">Status</label>
-                    <input type="select"  id="status" name="status" class="form-control">
+                    {{-- <input type="text"  id="status" name="status" placeholder="Select Status" class="form-control "> --}}
+                    <select type="text" class="form-control" name="status" id="status">
+                        <option  value="not_active">Not Active</option>
+                        <option  value="active">Active</option>
+                    </select>
+                    <div class="alert-danger">{{ $errors->first('status') }}</div>
+
+
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" class="form-control">
+                    <input type="password" id="password" name="password" placeholder="Enter Password" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="password-confirmation">Confirm Password</label>
-                    <input type="password" id="password-confirmation" name="password_confirmation" class="form-control">
+                    <input type="password" id="password-confirmation" name="password_confirmation" placeholder="Confirm Password" class="form-control">
                 </div>
 
                
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+
 
 
 

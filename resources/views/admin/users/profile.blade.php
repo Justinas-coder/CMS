@@ -35,9 +35,18 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="status">Status</label>
+                    {{-- <input type="text" name="status" class="form-control" id="status" value="{{$user->status}}"> --}}
+                    <select class="form-control" name="status" id="status">
+                        <option  value="not_active" {{$user->status == "not_active" ? 'selected' : '' }}>Not Active</option>
+                        <option  value="active" {{$user->status =="active" ? 'selected' : '' }}>Active</option>
+                    </select>
+                   
+                </div>
+                <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" name="email" class="form-control 
-                                @error('email') is-invalid @enderror" id="email" value="{{$user->email}}">
+                                 @error('email') is-invalid @enderror" id="email" value="{{$user->email}}">
 
                     @error('email')
                     <div class="invalid-feedback">{{$message}}</div>
