@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\MessageBag;
-
+use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
 
@@ -19,8 +19,6 @@ class UserController extends Controller
     }
 
     public function create(){
-
-
         
         return view('admin.users.create');
     }
@@ -36,10 +34,11 @@ class UserController extends Controller
             'avatar'=> ['file' ]
         ]);
 
-        $request->avatar = $request->avatar ? $request->avatar->store('images') : '';
+            $request->avatar = $request->avatar ? $request->avatar->store('images') : '';
         
+
         User::create([
-            'file' => $request->avatar,
+            'avatar' => $request->avatar,
             'username' => $request->username,
             'name' => $request->name,
             'status' => $request->status,
@@ -48,8 +47,12 @@ class UserController extends Controller
         ]);
 
         
-
+        session()->flash('message', 'User '  . $request->name . ' was Created');
         return back();
+
+       
+
+
 
 
     //   return $request->all();
