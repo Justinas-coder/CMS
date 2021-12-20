@@ -10,6 +10,8 @@
 
     @endif
 
+
+
     <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
 
         @csrf
@@ -21,7 +23,8 @@
 
         <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" name="username" placeholder="Enter Userame" class="form-control">
+            <input type="text" name="username" placeholder="Enter Userame" class="form-control"
+                value="{{old('username')}}">
             <div class="alert-danger">{{ $errors->first('username') }}</div>
 
         </div>
@@ -37,17 +40,7 @@
 
         </div>
 
-        <div class="form-group">
-            <label for="status">Status</label>
-            {{-- <input type="text"  id="status" name="status" placeholder="Select Status" class="form-control "> --}}
-            <select type="text" class="form-control" name="status" id="status">
-                <option value="not_active">Not Active</option>
-                <option value="active">Active</option>
-            </select>
-            <div class="alert-danger">{{ $errors->first('status') }}</div>
-
-
-        </div>
+        
 
         <div class="form-group">
             <label for="password">Password</label>
@@ -58,9 +51,12 @@
             <input type="password" id="password-confirmation" name="password_confirmation"
                 placeholder="Confirm Password" class="form-control">
         </div>
-
-
-
+        <div class="form-group">
+            <div class="form-check">
+                <input type="checkbox" id="status" name="status" value="1" class="form-check-input">
+                <label for="status" class="form-check-label">Active</label>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

@@ -8,6 +8,8 @@ use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+
 class UserController extends Controller
 {
 
@@ -29,7 +31,6 @@ class UserController extends Controller
 
             'username'=> ['unique:users,username', 'required', 'string', 'max:255', 'alpha_dash'],
             'name'=> ['required', 'string', 'max:255'],
-            'status'=> [ 'required','string', 'max:255'],
             'email'=> ['unique:users,email', 'required', 'email', 'max:255'],
             'avatar'=> ['file' ]
         ]);
@@ -41,11 +42,12 @@ class UserController extends Controller
             'avatar' => $request->avatar,
             'username' => $request->username,
             'name' => $request->name,
-            'status' => $request->status,
+            'status' => $request->status ? 1 : 0,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
 
+            
         
         session()->flash('message', 'User '  . $request->name . ' was Created');
         return back();
@@ -81,7 +83,7 @@ class UserController extends Controller
         ]);
 
         if(request('avatar')){
-
+            Storage::delete($user->avatar);
             $inputs['avatar'] = request('avatar')->store('images');
 
         }
@@ -105,6 +107,8 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        Storage::delete($user->avatar);
+
         $user->delete();
 
         session()->flash('user-deleted', 'User has been deleted');

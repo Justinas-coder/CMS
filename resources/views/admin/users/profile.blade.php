@@ -4,14 +4,18 @@
 
     <div class="row">
 
-        <div class="col-sm-6">
+        <div class="col-sm-3">
+        
+            <img src="{{$user->avatar_path}}" alt="" class="img-responsive img-rounded">
+        
+        </div>
+
+        <div class="col-sm-9">
 
             <form action="{{route('user.profile.update', $user)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="col-sm-6">
-                    <img height="40px" class="img-profile rounded-circle" src="{{$user->avatar}}">
-                </div>
+                
                 <div class="form-group">
                     <input type="file" name="avatar">
                 </div>
@@ -38,10 +42,9 @@
                     <label for="status">Status</label>
                     {{-- <input type="text" name="status" class="form-control" id="status" value="{{$user->status}}"> --}}
                     <select class="form-control" name="status" id="status">
-                        <option  value="not_active" {{$user->status == "not_active" ? 'selected' : '' }}>Not Active</option>
-                        <option  value="active" {{$user->status =="active" ? 'selected' : '' }}>Active</option>
+                        <option  value="0" {{$user->status == "0" ? 'selected' : '' }}>Not Active</option>
+                        <option  value="1" {{$user->status =="1" ? 'selected' : '' }}>Active</option>
                     </select>
-                   
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>

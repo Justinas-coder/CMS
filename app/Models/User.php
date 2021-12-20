@@ -66,6 +66,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
     /**
      * The attributes that should be cast.
      *
@@ -80,9 +81,9 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-    public function getAvatarAttribute($value){
-
-        return asset("storage/". $value);
-
+    public function getAvatarPathAttribute()
+    {
+        return $this->avatar ? asset("storage/". $this->avatar) : NULL;
     }
+
 }

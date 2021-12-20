@@ -36,7 +36,13 @@
 
                           <td>{{$user->id}}</td>
                           <td><a href="{{route('user.profile.show', $user->id)}}">{{$user->username}}</a></td>
-                          <td><img height="50px" src="{{$user->avatar}}" alt=""></td>
+                          <td>
+                            @if($user->avatar)
+                            <img height="50px" src="{{$user->avatar_path}}" alt="image">
+                            @else
+                            No Image
+                            @endif
+                          </td>
                           <td>{{$user->name}}</td>
                           <td>{{$user->created_at->diffForhumans()}}</td>
                           <td>{{$user->updated_at->diffForhumans()}}</td>
