@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Storage;
 class UserController extends Controller
 {
 
-    public function index(){
-
+    public function index()
+    {
         $users = User::all();
-        return view('admin.users.index', ['users'=>$users]);
-
+        return view('admin.users.index', ['users' => $users]);
     }
 
     public function create(){

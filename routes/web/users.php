@@ -13,6 +13,8 @@ Route::middleware('role:admin')->group(function(){
     Route::get('/users/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
     Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
     Route::delete('/users/{user}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/media', [App\Http\Controllers\MediaController::class, 'index'])->name('media.index');
+    Route::get('/media/create', [App\Http\Controllers\MediaController::class, 'create'])->name('media.create');
 
 
 
