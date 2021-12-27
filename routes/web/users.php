@@ -15,6 +15,8 @@ Route::middleware('role:admin')->group(function(){
     Route::delete('/users/{user}/destroy', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/media', [App\Http\Controllers\MediaController::class, 'index'])->name('media.index');
     Route::get('/media/create', [App\Http\Controllers\MediaController::class, 'create'])->name('media.create');
+    Route::post('/media/store', [App\Http\Controllers\MediaController::class, 'store'])->name('media.store');
+    Route::delete('/media/destroy', [App\Http\Controllers\MediaController::class, 'destroy'])->name('media.destroy');
 
 
 

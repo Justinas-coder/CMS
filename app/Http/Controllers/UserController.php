@@ -51,12 +51,6 @@ class UserController extends Controller
         session()->flash('message', 'User '  . $request->name . ' was Created');
         return back();
 
-       
-
-
-
-
-    //   return $request->all();
     }
 
     public function show(User $user)

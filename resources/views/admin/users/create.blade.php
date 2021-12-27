@@ -4,11 +4,7 @@
 
     <h1>Create User</h1>
 
-    @if(session('message'))
-
-    <div class="alert alert-success">{{Session::get('message')}}</div>
-
-    @endif
+   
 
 
 

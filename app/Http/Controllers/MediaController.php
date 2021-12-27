@@ -21,5 +21,38 @@ class MediaController extends Controller
         }
         // gmdate("Y-m-d H:i:s", Storage::lastModified($image));
         return view('admin.media.index', ['images' => $images]);
+
+      
+    }
+
+    public function create()
+    {
+        return view('admin.media.create');
+    }
+
+    public function store(Request $request)  
+    {  
+    
+        $imageName = time() .'.'. $request->image->extension();
+        request('image')->storeAs('images', $imageName);
+
+        // return response()->json(['success'=>$imageName]);
+
+        session()->flash('message', 'Image was Created');
+
+        return redirect()->route('media.index');
+    }
+
+    public function destroy(Media $image)
+    {
+        Storage::delete($image->path);
+
+       
+
+        dd($image->path);
+
+        session()->flash('image-deleted', 'Image has been deleted');
+
+        return back();
     }
 }
