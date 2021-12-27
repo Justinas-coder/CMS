@@ -15,10 +15,12 @@ class MediaController extends Controller
 
         foreach(Storage::allFiles('images') as $image){
             $images[$image] = [
-                'path' => asset("storage/". $image),
+                'public_path' => asset("storage/". $image),
+                'storage_path' => $image,
                 'created_at' => gmdate("Y-m-d H:i:s", Storage::lastModified($image))
             ];
         }
+
         // gmdate("Y-m-d H:i:s", Storage::lastModified($image));
         return view('admin.media.index', ['images' => $images]);
 
@@ -43,16 +45,14 @@ class MediaController extends Controller
         return redirect()->route('media.index');
     }
 
-    public function destroy(Media $image)
+    public function destroy(Request $request)
     {
-        Storage::delete($image->path);
+        Storage::delete($request->input('path'));     
 
-       
+        // dd($image->path);
 
-        dd($image->path);
+        // session()->flash('image-deleted', 'Image has been deleted');
 
-        session()->flash('image-deleted', 'Image has been deleted');
-
-        return back();
+        return redirect()->route('media.index');
     }
 }

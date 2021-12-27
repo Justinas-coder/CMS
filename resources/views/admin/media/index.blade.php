@@ -12,37 +12,42 @@
 
     @if($images)
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Created</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
+    <div class="table-responsive">
 
-        @foreach ($images as $image )
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
 
-        <tbody>
-            <tr>
+            @foreach ($images as $image )
 
-                <td>
-                    <img src="{{ $image['path'] }}" alt="">
-                </td>
-                <td>{{ $image['created_at'] }}</td>
-                <td>
-                    <form method="post" action="{{route('media.destroy', $image['path'])}}" enctype="multipart/form-data">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
+            <tbody>
+                <tr>
 
-            @endforeach
+                    <td>
+                        <img src="{{ $image['public_path'] }}" alt="">
+                    </td>
+                    <td>{{ $image['created_at'] }}</td>
+                    <td>
+                        <form method="post" action="{{route('media.destroy')}}" enctype="multipart/form-data">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="path" value="{{ $image['storage_path'] }}" />
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
 
-        </tbody>
-    </table>
+                @endforeach
+
+            </tbody>
+        </table>
+
+    </div>
 
     @endif
 

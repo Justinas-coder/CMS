@@ -47,9 +47,6 @@
                 <button class="btn btn-primary btn-block" type="submit">Create</button>
 
             </form>
-
-
-
         </div>
 
         <div class="col-sm-9">
