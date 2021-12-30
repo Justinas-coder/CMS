@@ -83,4 +83,11 @@ $posts = auth()->user()->posts()->paginate(5);
 
           return redirect()->route('post.index');
     }
+
+    public function post($id)
+    {
+      $post = Post::findOrFail($id);
+      
+      return view('post', ['post'=>$post]);
+    }
 }

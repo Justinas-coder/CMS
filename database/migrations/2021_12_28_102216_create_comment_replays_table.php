@@ -18,11 +18,11 @@ class CreateCommentReplaysTable extends Migration
             $table->integer('comment_id')->constrained()->onDelete('cascade');
             $table->integer('is_active')->default(0);
             $table->string('author');
+            $table->string('photo');
             $table->string('email');
             $table->string('body');
             $table->timestamps();
 
-            $table->foreign('comment_id')->references('id')->on('comment')->onDelete('cascade');
         });
     }
 

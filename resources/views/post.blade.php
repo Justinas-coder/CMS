@@ -2,13 +2,6 @@
     @section('content')
 
 
-    <h1 class="my-4">CONTENT PAGE
-    </h1>
-
-    <!-- Blog Post -->
-
-    @foreach($posts as $post)
-
     <div class="card mb-4">
         <div class="card-body">
             <h2 class="card-title">{{$post->title}}</h2>
@@ -29,11 +22,11 @@
         <div class="well">
             <h4>Leave a Comment:</h4>
 
-             @if(session('comment_message'))
+            @if(session('comment_message'))
 
-        <div class="alert alert-success">{{Session::get('comment_message')}}</div>
+            <div class="alert alert-success">{{Session::get('comment_message')}}</div>
 
-        @endif
+            @endif
 
 
             <form method="post" action="{{ route('comment.store') }}">
@@ -103,18 +96,6 @@
         </div>
 
     </div>
-
-    @endforeach
-
-    <!-- Pagination -->
-    <ul class="pagination justify-content-center mb-4">
-        <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-        </li>
-        <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-        </li>
-    </ul>
 
 
     @endsection

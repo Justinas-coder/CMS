@@ -12,10 +12,14 @@ class Post extends Model
 
     protected $guarded = [];
 
-    public function user(){
-
+    public function user()
+    {
         return $this->belongsTo(User::class);
+    }
 
+    public function comments()
+    {
+        return $this->hasMany(Post::class);
     }
 
     // public function setPostImageAttribute($value){

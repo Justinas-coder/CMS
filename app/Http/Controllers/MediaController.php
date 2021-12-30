@@ -51,7 +51,7 @@ class MediaController extends Controller
 
         // dd($image->path);
 
-        // session()->flash('image-deleted', 'Image has been deleted');
+        session()->flash('image-deleted', 'Image has been deleted');
 
         return redirect()->route('media.index');
     }

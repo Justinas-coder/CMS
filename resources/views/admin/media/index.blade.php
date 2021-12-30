@@ -4,9 +4,9 @@
 
     <h1>Media</h1>
 
-    @if(session('message'))
+    @if(session('image-deleted'))
 
-    <div class="alert alert-success">{{Session::get('message')}}</div>
+    <div class="alert alert-success">{{Session::get('image-deleted')}}</div>
 
     @endif
 

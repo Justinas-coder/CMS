@@ -19,6 +19,8 @@ Route::middleware('role:admin')->group(function(){
     Route::delete('/media/destroy', [App\Http\Controllers\MediaController::class, 'destroy'])->name('media.destroy');
     Route::resource('/comments', App\Http\Controllers\PostCommentsController::class);
     Route::resource('/comment/replies', App\Http\Controllers\CommentRepliesController::class);
+    Route::put('/comments/update/{id}', [App\Http\Controllers\PostCommentsController::class, 'update'])->name('comment.update');
+    Route::delete('/comments/destroy/{id}', [App\Http\Controllers\PostCommentsController::class, 'destroy'])->name('comment.destroy');
 
 
 

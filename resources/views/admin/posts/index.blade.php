@@ -34,6 +34,8 @@
                             <th>Image</th>
                             <th>Created At</th>
                             <th>Updated At</th>
+                            <th>Posts</th>
+                            <th>Comments</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -48,6 +50,8 @@
                             <td><img height="40px" src="{{$post->post_image}}" alt=""></td>
                             <td>{{$post->created_at->diffForHumans()}}</td>
                             <td>{{$post->updated_at->diffForHumans()}}</td>
+                            <td><a href="{{route('home.post', $post->id)}}">View Post</a></td>
+                            <td><a href="{{route('comments.show', $post->id)}}">View Comments</a></td>
                             <td>
                                 <form method="post" action="{{route('post.destroy', $post->id)}}"
                                     enctype="multipart/form-data">
