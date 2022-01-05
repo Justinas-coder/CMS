@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use App\Models\Post;
 
 class PostCommentsController extends Controller
 {
@@ -42,19 +43,20 @@ class PostCommentsController extends Controller
 
         $user = Auth::user();
 
-        
-
         $data = [
 
             'post_id' => $request->post_id,
-            'author' => $user->name,
-            'email' => $user->email,
-            'photo' => $user->avatar,
-            'body' => $request->title
+            'user_id' => $user->id,
+            'body' => $request->title,
+            'comment_id' => $request->has('comment_id') ? $request->comment_id : NULL
         ];
 
         // dd($data);
+
+       
         Comment::create($data);
+
+
 
 
         $request->session()->flash('comment_message', 'Your message has been submitted and is waiting moderation');
@@ -72,6 +74,15 @@ class PostCommentsController extends Controller
     public function show($id)
     {
         //
+
+        $post = Post::findOrFail($id);
+
+
+        $comments = $post->comments;
+
+        
+        return view('admin.comments.show', ['comments' => $comments]);
+
     }
 
     /**

@@ -5,9 +5,9 @@
     <div class="row">
 
         <div class="col-sm-3">
-        
+
             <img src="{{$user->avatar_path}}" alt="" class="img-responsive img-rounded">
-        
+
         </div>
 
         <div class="col-sm-9">
@@ -15,7 +15,7 @@
             <form action="{{route('user.profile.update', $user)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                
+
                 <div class="form-group">
                     <input type="file" name="avatar">
                 </div>
@@ -40,10 +40,11 @@
                 </div>
                 <div class="form-group">
                     <label for="status">Status</label>
-                    {{-- <input type="text" name="status" class="form-control" id="status" value="{{$user->status}}"> --}}
+                    {{-- <input type="text" name="status" class="form-control" id="status" value="{{$user->status}}">
+                    --}}
                     <select class="form-control" name="status" id="status">
-                        <option  value="0" {{$user->status == "0" ? 'selected' : '' }}>Not Active</option>
-                        <option  value="1" {{$user->status =="1" ? 'selected' : '' }}>Active</option>
+                        <option value="0" {{$user->status == "0" ? 'selected' : '' }}>Not Active</option>
+                        <option value="1" {{$user->status =="1" ? 'selected' : '' }}>Active</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -111,54 +112,50 @@
                                 </tr>
                             </tfoot>
                             <tbody>
-                            @foreach ($roles as $role)
-                            <tr>
-                                <td><input type="checkbox" 
-                                    @foreach ($user->roles as $user_role)
+                                @foreach ($roles as $role)
+                                <tr>
+                                    <td><input type="checkbox" @foreach ($user->roles as $user_role)
                                         @if ($user_role->slug == $role->slug)
-                                            checked
+                                        checked
                                         @endif
-                                    @endforeach
-                                
-                                ></td>
-                                <td>{{$role->id}}</td>
-                                <td>{{$role->name}}</td>
-                                <td>{{$role->slug}}</td>
-                                <td>
-                                
-                                    <form action="{{route('user.role.attach', $user)}}" method="post">
+                                        @endforeach
+
+                                        ></td>
+                                    <td>{{$role->id}}</td>
+                                    <td>{{$role->name}}</td>
+                                    <td>{{$role->slug}}</td>
+                                    <td>
+
+                                        <form action="{{route('user.role.attach', $user)}}" method="post">
                                             @method ('PUT')
                                             @csrf
-                                        <input type="hidden" name="role" value={{$role->id}}>
-                                        <button type="submit" class="btn btn-primary"
-                                        
-                                        @if($user->roles->contains($role))
-                                            disabled
-                                        @endif
-                                        
-                                        >Attach</button>
-                                    </form>
-                                
-                                </td>
-                                <td>
+                                            <input type="hidden" name="role" value={{$role->id}}>
+                                            <button type="submit" class="btn btn-primary"
+                                                @if($user->roles->contains($role))
+                                                disabled
+                                                @endif
 
-                                    <form action="{{route('user.role.detach', $user)}}" method="post">
+                                                >Attach</button>
+                                        </form>
+
+                                    </td>
+                                    <td>
+
+                                        <form action="{{route('user.role.detach', $user)}}" method="post">
                                             @method ('PUT')
                                             @csrf
-                                        <input type="hidden" name="role" value={{$role->id}}>
-                                        <button class="btn btn-danger"
-                                        
-                                        @if(!$user->roles->contains($role))
-                                            disabled
-                                        @endif
-                                        
-                                        >Detach</button>
-                                    </form>                            
+                                            <input type="hidden" name="role" value={{$role->id}}>
+                                            <button class="btn btn-danger" @if(!$user->roles->contains($role))
+                                                disabled
+                                                @endif
 
-                                </td>
-                            </tr>
-                                
-                            @endforeach
+                                                >Detach</button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+
+                                @endforeach
 
 
                             </tbody>
@@ -172,5 +169,5 @@
     </div>
 
 
-            @endsection
+    @endsection
 </x-admin-master>

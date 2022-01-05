@@ -2,9 +2,9 @@
 
     @section('content')
 
-    <h1>Comment</h1>
+    @if($comments)
 
-    @if(count($comments) > 0)
+    <h1>Comment</h1>
 
     <table class="table">
         <thead>

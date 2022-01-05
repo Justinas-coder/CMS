@@ -14,6 +14,7 @@ class PostController extends Controller
 
 $posts = auth()->user()->posts()->paginate(5);
 
+
         return view('admin.posts.index', ['posts'=>$posts]);
     }
     public function show(Post $post){
@@ -87,7 +88,12 @@ $posts = auth()->user()->posts()->paginate(5);
     public function post($id)
     {
       $post = Post::findOrFail($id);
+
+      $comments = $post->comments()
+      ->whereIsActive(1)
+      ->whereNull('comment_id')
+      ->get();
       
-      return view('post', ['post'=>$post]);
+      return view('post', ['post'=>$post, 'comments' => $comments]);
     }
 }

@@ -2,15 +2,26 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
 class Post extends Model
 {
+    use Sluggable;
     use HasFactory;
 
     protected $guarded = [];
+
+    public function sluggable(): array 
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function user()
     {
@@ -19,7 +30,7 @@ class Post extends Model
 
     public function comments()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Comment::class);
     }
 
     // public function setPostImageAttribute($value){
@@ -39,4 +50,3 @@ class Post extends Model
 // public/storage/images/file.jpg
 // public/images/file.jpg
 // http://127.0.0.1:8000/images/AH7wuqHwXh56g1vHu18PfRSlcodkDvaeM1O6zXgC.jpg // reikšmė išsaugomas db.
-

@@ -34,7 +34,7 @@
                             <th>Image</th>
                             <th>Created At</th>
                             <th>Updated At</th>
-                            <th>Posts</th>
+                            <th>Post Link</th>
                             <th>Comments</th>
                             <th>Delete</th>
                         </tr>
