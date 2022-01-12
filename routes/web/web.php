@@ -15,8 +15,10 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/admin', [App\Http\Controllers\AdminsController::class, 'index'])->name('admin.index');
     Route::post('/comment/store', [App\Http\Controllers\PostCommentsController::class, 'store'])->name('comment.store');
-
-   
+    
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web']], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 
 });
 

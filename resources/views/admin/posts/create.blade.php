@@ -2,6 +2,8 @@
 
     @section('content')
 
+        @include('includes.tinyeditor')
+
         <h1>Create</h1>
         
         <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">

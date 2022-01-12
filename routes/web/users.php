@@ -22,7 +22,7 @@ Route::middleware('role:admin')->group(function(){
     Route::put('/comments/update/{id}', [App\Http\Controllers\PostCommentsController::class, 'update'])->name('comment.update');
     Route::delete('/comments/destroy/{id}', [App\Http\Controllers\PostCommentsController::class, 'destroy'])->name('comment.destroy');
     Route::get('/comments/{id}', [App\Http\Controllers\PostCommentsController::class, 'show'])->name('comments.show');
-
+    
 
 
 

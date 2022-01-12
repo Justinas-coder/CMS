@@ -18,6 +18,8 @@
 
 
     @endif
+    <div>
+    </div>
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -50,7 +52,7 @@
                             <td><img height="40px" src="{{$post->post_image}}" alt=""></td>
                             <td>{{$post->created_at->diffForHumans()}}</td>
                             <td>{{$post->updated_at->diffForHumans()}}</td>
-                            <td><a href="{{route('home.post', $post->id)}}">View Post</a></td>
+                            <td><a href="{{route('home.post', $post->slug)}}">View Post</a></td>
                             <td><a href="{{route('comments.show', $post->id)}}">View Comments</a></td>
                             <td>
                                 <form method="post" action="{{route('post.destroy', $post->id)}}"

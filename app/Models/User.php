@@ -86,4 +86,11 @@ class User extends Authenticatable
         return $this->avatar ? asset("storage/". $this->avatar) : NULL;
     }
 
+    public function getGravatarAttribute()
+    {
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+
+        return "http://www.gravatar.com/avatar/$hash";
+    }
+
 }

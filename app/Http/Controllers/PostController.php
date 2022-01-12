@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+
+
 class PostController extends Controller
 {
     //
+
 
     public function index(){
 
@@ -85,9 +88,11 @@ $posts = auth()->user()->posts()->paginate(5);
           return redirect()->route('post.index');
     }
 
-    public function post($id)
+    public function post($slug)
     {
-      $post = Post::findOrFail($id);
+      $post = Post::findBySlugOrFail($slug);
+
+      // dd($slug);
 
       $comments = $post->comments()
       ->whereIsActive(1)
