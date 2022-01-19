@@ -17,6 +17,7 @@ Route::middleware('role:admin')->group(function(){
     Route::get('/media/create', [App\Http\Controllers\MediaController::class, 'create'])->name('media.create');
     Route::post('/media/store', [App\Http\Controllers\MediaController::class, 'store'])->name('media.store');
     Route::delete('/media/destroy', [App\Http\Controllers\MediaController::class, 'destroy'])->name('media.destroy');
+    Route::delete('/media/deleteMedia', [App\Http\Controllers\MediaController::class, 'deleteMedia'])->name('delete.media');
     Route::resource('/comments', App\Http\Controllers\PostCommentsController::class);
     Route::resource('/comment/replies', App\Http\Controllers\CommentRepliesController::class);
     Route::put('/comments/update/{id}', [App\Http\Controllers\PostCommentsController::class, 'update'])->name('comment.update');

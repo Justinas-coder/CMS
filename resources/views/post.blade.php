@@ -76,17 +76,17 @@
                     <h4 class="media-heading">{{$comment_replay->user->username}}
                         <small>{{$comment_replay->created_at}}</small>
                     </h4>
-                    
+
                 </div>
 
                 {{$comment_replay->body}}
-                    
+
                 @endforeach
-               
+
 
 
                 <!-- Nested Comment -->
-                
+
 
                 <form method="post" action="{{ route('comment.store') }}">
 
@@ -103,7 +103,6 @@
                     </div>
                 </form>
                 <!-- End Nested Comment -->
-
 
             </div>
         </div>

@@ -12,7 +12,6 @@ class MediaController extends Controller
     {
         $images = [];
 
-
         foreach(Storage::allFiles('images') as $image){
             $images[$image] = [
                 'public_path' => asset("storage/". $image),
@@ -22,9 +21,7 @@ class MediaController extends Controller
         }
 
         // gmdate("Y-m-d H:i:s", Storage::lastModified($image));
-        return view('admin.media.index', ['images' => $images]);
-
-      
+        return view('admin.media.index', ['images' => $images]);      
     }
 
     public function create()
@@ -49,10 +46,36 @@ class MediaController extends Controller
     {
         Storage::delete($request->input('path'));     
 
-        // dd($image->path);
-
         session()->flash('image-deleted', 'Image has been deleted');
 
         return redirect()->route('media.index');
+    }
+
+    public function deleteMedia(Request $request)
+    {   
+
+        // if(isset($request->image)){
+
+        //     Storage::delete($request->image);
+
+        //     return redirect()->route('media.index');
+
+        // }
+
+        foreach ($request->checkBoxArray as $path) {
+
+
+            Storage::delete($path);
+
+
+    }
+
+        
+
+        
+
+        
+       return redirect()->route('media.index');
+
     }
 }
