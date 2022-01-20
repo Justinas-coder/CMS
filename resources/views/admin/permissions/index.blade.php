@@ -9,15 +9,14 @@
                 @csrf
 
                 <div class="form-group">
+
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
 
                     <div>
-
                         @error('name')
                         <span><strong>{{$message}}</strong></span>
                         @enderror
-
                     </div>
 
                 </div>
@@ -27,7 +26,6 @@
             </form>
 
         </div>
-
 
         <div class="col-sm-9">
             <div class="card-header py-3">
@@ -42,10 +40,8 @@
                                 <th>Name</th>
                                 <th>Slug</th>
                                 <th>Delete</th>
-
                             </tr>
                         </thead>
-
                         <tbody>
                             @foreach ($permissions as $permission)
                             <tr>
@@ -61,17 +57,13 @@
 
                                     </form>
                                 </td>
-
                             </tr>
-
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
 
     @endsection

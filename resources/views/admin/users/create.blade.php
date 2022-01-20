@@ -4,14 +4,8 @@
 
     <h1>Create User</h1>
 
-   
-
-
-
     <form action="{{route('user.store')}}" method="post" enctype="multipart/form-data">
-
         @csrf
-
 
         <div class="form-group">
             <input type="file" name="avatar">
@@ -33,11 +27,7 @@
             <label for="email">Email</label>
             <input type="text" id="email" name="email" placeholder="Enter Email" class="form-control">
             <div class="alert-danger">{{ $errors->first('email') }}</div>
-
         </div>
-
-        
-
         <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter Password" class="form-control">
@@ -55,10 +45,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-
-
-
+    
     @endsection
 
 </x-admin-master>

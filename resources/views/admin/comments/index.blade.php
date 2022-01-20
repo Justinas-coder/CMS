@@ -70,7 +70,6 @@
 
     @endif
 
-
     @endsection
 
 </x-admin-master>

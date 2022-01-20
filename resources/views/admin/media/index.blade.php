@@ -6,8 +6,6 @@
 
     @if(session('image-deleted'))
 
-
-
     <div class="alert alert-success">{{Session::get('image-deleted')}}</div>
 
     @endif
@@ -65,9 +63,6 @@
 
     @endif
 
-
-
-
     @endsection
 
     @section ('scripts')
@@ -88,12 +83,8 @@
 
                         this.checked = false;
                     });
-
                 }
-
-
             });
-
         });
 
     </script>

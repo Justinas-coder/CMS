@@ -1,22 +1,22 @@
 <x-admin-master>
     @section('content')
 
-@if(session()->has('role-updated'))
+    @if(session()->has('role-updated'))
     <div class="alert alert-success">
         {{session('role-updated')}}
     </div>
-@endif
+    @endif
 
     <div class="row">
-    
-    @if(session()->has('role-deleted'))
 
-            <div class="alert alert-danger">
-                {{session('role-deleted')}}
-            </div>
-        
+        @if(session()->has('role-deleted'))
+
+        <div class="alert alert-danger">
+            {{session('role-deleted')}}
+        </div>
+
         @endif
-    
+
     </div>
 
     <div class="row">
@@ -28,16 +28,12 @@
 
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input 
-                        type="text" 
-                        name="name" 
-                        id="name" 
-                        class="form-control @error('name') is-invalid @enderror">
+                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror">
 
                     <div>
-                    
+
                         @error('name')
-                            <span><strong>{{$message}}</strong></span>
+                        <span><strong>{{$message}}</strong></span>
                         @enderror
 
                     </div>
@@ -62,12 +58,12 @@
                                 <th>Name</th>
                                 <th>Slug</th>
                                 <th>Delete</th>
-                                
-                                </tr>
+
+                            </tr>
                         </thead>
-                        
+
                         <tbody>
-                        @foreach ($roles as $role)
+                            @foreach ($roles as $role)
                             <tr>
                                 <td>{{$role->id}}</td>
                                 <td><a href="{{route('roles.edit', $role->id)}}">{{$role->name}}</a></td>
@@ -82,8 +78,8 @@
                                 </td>
 
                             </tr>
-                                 
-                        @endforeach
+
+                            @endforeach
 
                         </tbody>
                     </table>

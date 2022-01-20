@@ -157,17 +157,13 @@
 
                                 @endforeach
 
-
                             </tbody>
                         </table>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     @endsection
 </x-admin-master>

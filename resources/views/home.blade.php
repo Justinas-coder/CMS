@@ -16,7 +16,7 @@
         <img class="card-img-top" src="{{$post->post_image}}" alt="">
         <div class="card-body">
             <p class="card-text">{{Str::limit($post->body, '50', '....')}}</p>
-            <a href="{{route('post', $post->id)}}" class="btn btn-primary">Read More &rarr;</a>
+            <a href="{{route('home.post', $post->slug)}}" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
             Posted on {{$post->created_at->diffForHumans()}} by
@@ -29,11 +29,11 @@
         <div class="well">
             <h4>Leave a Comment:</h4>
 
-             @if(session('comment_message'))
+            @if(session('comment_message'))
 
-        <div class="alert alert-success">{{Session::get('comment_message')}}</div>
+            <div class="alert alert-success">{{Session::get('comment_message')}}</div>
 
-        @endif
+            @endif
 
 
             <form method="post" action="{{ route('comment.store') }}">
@@ -49,8 +49,6 @@
                     <input type="submit" class="btn btn-success" value="Create post" />
                 </div>
             </form>
-
-
 
         </div>
 

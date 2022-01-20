@@ -1,15 +1,12 @@
 <x-admin-master>
 
-
-
     @section('content')
 
         <h1>Upload Media</h1>
 
         @if(session('message'))
 
-    <div class="alert alert-success">{{Session::get('message')}}</div>
-    
+    <div class="alert alert-success">{{Session::get('message')}}</div>    
 
     @endif
 

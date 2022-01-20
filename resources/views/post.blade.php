@@ -83,10 +83,7 @@
 
                 @endforeach
 
-
-
                 <!-- Nested Comment -->
-
 
                 <form method="post" action="{{ route('comment.store') }}">
 
