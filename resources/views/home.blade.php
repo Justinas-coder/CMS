@@ -27,7 +27,7 @@
 
         <!-- Comments Form -->
         <div class="well">
-            <h4>Leave a Comment:</h4>
+            <h6>Leave a Comment:</h6>
 
             @if(session('comment_message'))
 
@@ -56,49 +56,57 @@
 
         <!-- Posted Comments -->
 
+        @foreach ($post->comments as $comment)
+
         <!-- Comment -->
         <div class="media">
             <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
+                <img height="64" class="media-object" src="{{Auth::user()->avatar_path}}" alt="">
             </a>
             <div class="media-body">
-                <h4 class="media-heading">Start Bootstrap
-                    <small>August 25, 2014 at 9:30 PM</small>
-                </h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras
-                purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-        </div>
-        <!-- Comment -->
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">Start Bootstrap
-                    <small>August 25, 2014 at 9:30 PM</small>
-                </h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras
-                purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                fringilla. Donec lacinia congue felis in faucibus.
-                <!-- Nested Comment -->
+                <h6 class="media-heading">{{$comment->user->username}}
+                    <small>{{$comment->created_at}}</small>
+                </h6>
+                {{$comment->body}}
+
+                @foreach ($comment->comments as $comment_replay)
+
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                        <img height="54" class="media-object" src="{{$comment_replay->user->avatar_path}}" alt="">
                     </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">Nested Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin
-                        commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
-                        nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
+                    <h6 class="media-heading">{{$comment_replay->user->username}}
+                        <small>{{$comment_replay->created_at}}</small>
+                    </h6>
+
                 </div>
+
+                {{$comment_replay->body}}
+
+                @endforeach
+
+                <!-- Nested Comment -->
+
+                <form method="post" action="{{ route('comment.store') }}">
+
+                    <input type="hidden" name="comment_id" value="{{$comment->id}}">
+                    <input type="hidden" name="post_id" value="{{$post->id}}">
+
+                    <div class="form-group">
+                        @csrf
+                        <label class="label">Body: </label>
+                        <input type="text" name="title" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" value="Reply" />
+                    </div>
+                </form>
                 <!-- End Nested Comment -->
+
             </div>
         </div>
+              
+        @endforeach
 
     </div>
 

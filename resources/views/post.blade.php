@@ -59,7 +59,7 @@
         <!-- Comment -->
         <div class="media">
             <a class="pull-left" href="#">
-                <img height="64" class="media-object" src="{{Auth::user()->gravatar}}" alt="">
+                <img height="64" class="media-object" src="{{Auth::user()->avatar_path}}" alt="">
             </a>
             <div class="media-body">
                 <h4 class="media-heading">{{$comment->user->username}}
