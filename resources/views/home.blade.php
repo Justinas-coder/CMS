@@ -61,7 +61,7 @@
         <!-- Comment -->
         <div class="media">
             <a class="pull-left" href="#">
-                <img height="64" class="media-object" src="{{Auth::user()->avatar_path}}" alt="">
+                <img height="64" class="media-object" src="{{$comment->user->avatar_path}}" alt="">
             </a>
             <div class="media-body">
                 <h6 class="media-heading">{{$comment->user->username}}

@@ -68,13 +68,8 @@ class MediaController extends Controller
             Storage::delete($path);
 
 
-    }
-
-        
-
-        
-
-        
+    }   
+ 
        return redirect()->route('media.index');
 
     }
